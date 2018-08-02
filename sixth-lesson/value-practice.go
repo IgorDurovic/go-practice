@@ -1,8 +1,8 @@
 package main
 
 // TWO TYPES OF METHODS:
-// 		VALUE RECEIVERS - PASS BY VALUE
-//		POINTER RECEIVERS - PASS BY REFERENCE
+// 		VALUE RECEIVERS - PASS "THIS" BY VALUE
+//		POINTER RECEIVERS - PASS "THIS" BY REFERENCE
 //
 // THIS LESSON WILL DEMONSTRATE VALUE RECEIVERS
 
@@ -29,9 +29,17 @@ type car struct {
 }
 
 // our first method. Belongs to type car
-// where c is the instance being used
-// (this keyword in many other languages)
+// where c is the value of the instance being
+// used.
+//
+// NOTE: don't confuse c with the "this" special
+// object in other languages. c does not hold a 
+// reference to the car object doing the calling
 func (c car) kmh() float64 {
+	// if you tried to changed the value of a member variable
+	// of c it will only change the local copy
+	//
+	// ex. c.top_speed_kmh = 10
 	return float64(c.gas_pedal) * (c.top_speed_kmh / usixteenbitmax)
 }
 
